@@ -104,6 +104,11 @@ publishMods {
     version = "${mod_version}"
     type = STABLE
 
+    def neoOptions = publishOptions {
+        file = project.provider { project(":neo").tasks.jar }.flatMap { it.archiveFile }
+        displayName = "${project.name} Neo ${mod_version}+mc${minecraft_version}"
+        modLoaders.add("neoforge")
+    }
 
     def curseForgeOptions = curseforgeOptions {
         accessToken = providers.environmentVariable("CURSE_TOKEN")
