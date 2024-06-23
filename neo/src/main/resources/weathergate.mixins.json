@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.unrealdinnerbone.weathergate.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "ibicf.refmap.json",
+  "mixins": [
+    "ServerLevelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+  ]
+}

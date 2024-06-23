@@ -1,0 +1,35 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea/*
+!.idea/scopes
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+fabric2/run_client/
+
+fabric/run_client/
+
+logs/
+
+neo/runs/
+
+common/src/generated/resources/.cache/
+
+runs/

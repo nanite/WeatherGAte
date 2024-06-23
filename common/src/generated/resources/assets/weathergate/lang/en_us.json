@@ -1,0 +1,8 @@
+{
+  "block.weathergate.snow_catcher": "Snow Catcher",
+  "block.weathergate.terrain_controller": "Teriann Controller",
+  "block.weathergate.terrain_controller.no_data": "No Data Found! Replace Block and Try Again!",
+  "weathergate.type.foliage": "Foliage",
+  "weathergate.type.grass": "Grass",
+  "weathergate.type.water": "Water"
+}

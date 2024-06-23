@@ -1,0 +1,135 @@
+plugins {
+    id("dev.nanite.mlp") version("0.1.12")
+    id("java-library")
+    id("maven-publish")
+    id("me.modmuss50.mod-publish-plugin") version "0.3.0"
+}
+
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+multiLoader.root() {
+    minecraftVersion.set(project.property("minecraft_version"))
+    modID.set(project.property("mod_id"))
+    splitSources.set(true)
+    accessWidenerFile.set(project(":common").file("src/main/resources/${mod_id}.accesswidener"))
+    convertAccessWidener.set(true)
+    dataGen {
+        useNeo.set(project(":common").file("src/generated/resources"))
+    }
+}
+
+allprojects {
+    def isSnapshot = providers.environmentVariable("SNAPSHOT").map {it == "true"}.getOrElse(false)
+    version = "${mod_version}+mc${minecraft_version}${isSnapshot ? '-SNAPSHOT' : ''}"
+    setArchivesBaseName("${mod_name}-${project.name}".toLowerCase())
+    group = "com.unrealdinnerbone"
+
+
+}
+
+subprojects {
+
+
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+    apply plugin: 'dev.nanite.mlp'
+
+
+    sourceSets.main.resources.srcDir project.file('src/generated/resources')
+
+    java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+
+    base {
+        archivesName = "${project.property("mod_name")}-${project.name}".toLowerCase()
+    }
+    repositories {
+        maven {
+            name = "NeoForge"
+            url = "https://maven.neoforged.net/"
+        }
+        maven {
+            name = "Fabric"
+            url = "https://maven.fabricmc.net/"
+        }
+        maven {
+            name = "Nanite"
+            url = "https://maven.nanite.dev/releases"
+        }
+        maven {
+            name = "Nanite"
+            url = "https://maven.ftb.dev/snapshots"
+        }
+        maven {
+            url "https://maven.architectury.dev/"
+        }
+    }
+    tasks.withType(ProcessResources).configureEach {
+        outputs.upToDateWhen { false }
+    }
+
+    test {
+        enabled = false
+    }
+
+    publishing {
+        repositories {
+            if (providers.environmentVariable("NANITE_TOKEN").isPresent()) {
+                maven {
+                    def isSnapshot = providers.environmentVariable("SNAPSHOT").map {it == "true"}.getOrElse(false)
+                    url "https://maven.nanite.dev/${isSnapshot ? 'snapshots' : 'releases'}"
+                    credentials {
+                        username = "nanite"
+                        password = providers.environmentVariable("NANITE_TOKEN").get()
+                    }
+                }
+            }
+        }
+        publications {
+            register("mavenJava", MavenPublication) {
+                groupId project.group
+                artifactId project.getArchivesBaseName()
+            }
+        }
+    }
+
+
+}
+
+
+publishMods {
+    dryRun = providers.environmentVariable("CURSE_TOKEN").getOrNull() == null
+    changelog = file("./CHANGELOG.md").text
+    version = "${mod_version}"
+    type = STABLE
+
+
+    def curseForgeOptions = curseforgeOptions {
+        accessToken = providers.environmentVariable("CURSE_TOKEN")
+        projectId = "${curse_id}"
+        minecraftVersions.add("${minecraft_version}")
+        requires {
+            slug = "ftb-library-forge"
+            slug = "trenzalore"
+        }
+    }
+
+    curseforge("curseforgeNeoForge") {
+        from(curseForgeOptions, neoOptions)
+    }
+
+}
+
+
+
+
+//dependencies {
+//    implementation "net.neoforged:neoforge:${neo_version}"
+//    implementation("com.unrealdinnerbone:trenzalore-neo:${project.property("trenzalore_version")}+mc${project.property("minecraft_version")}")
+//    implementation "dev.ftb.mods:ftb-library-neoforge:${ftb_lib_version}"
+//    implementation "org.embeddedt:embeddium-1.20.4:0.3.9-git.e63cb32+mc1.20.4"
+//    implementation "curse.maven:serene-seasons-291874:5206533"
+//    implementation "curse.maven:glitchcore-955399:5088442"
+//
+//}

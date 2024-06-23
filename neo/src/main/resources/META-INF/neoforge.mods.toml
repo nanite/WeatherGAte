@@ -1,0 +1,34 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "All Rights Reserved unless stated otherwise. Distribution permission is given to FeedTheBeast and CurseForge for use in modpacks"
+[[mods]]
+    modId = "weathergate"
+    version = "${mod_version}"
+    displayName = "Weather Gate"
+    logoFile = "assets/jamd/logo.png"
+    credits = ""
+    authors = "UnRealDinnerbone"
+    description = "Gate the weather"
+[[dependencies.weathergate]]
+    modId = "neoforge"
+    required = true
+    versionRange = "[1.0,)"
+    ordering = "NONE"
+    side = "BOTH"
+[[dependencies.weathergate]]
+    modId = "minecraft"
+    required = true
+    versionRange = "[${minecraft_version}]"
+    ordering = "NONE"
+    side = "BOTH"
+[[dependencies.weathergate]]
+    modId = "trenzalore"
+    required = true
+    versionRange = "[${trenzalore_version},)"
+    ordering = "NONE"
+    side = "BOTH"
+[[dependencies.weathergate]]
+    modId = "ftblibrary"
+    side = "BOTH"
+[[mixins]]
+    config = "weathergate.mixins.json"

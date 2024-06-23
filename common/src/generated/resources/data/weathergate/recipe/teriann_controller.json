@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:beacon"
+    },
+    "G": {
+      "item": "minecraft:grass_block"
+    },
+    "O": {
+      "tag": "minecraft:leaves"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    "OOO",
+    "WBW",
+    "GGG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "weathergate:terrain_controller"
+  }
+}

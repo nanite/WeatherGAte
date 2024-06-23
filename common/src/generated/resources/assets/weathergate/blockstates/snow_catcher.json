@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "weathergate:block/snow_catcher"
+    }
+  }
+}
