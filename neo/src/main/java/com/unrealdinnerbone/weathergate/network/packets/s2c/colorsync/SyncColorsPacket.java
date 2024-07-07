@@ -19,7 +19,7 @@ public record SyncColorsPacket(ResourceLocation dim, Map<BlockPos, Map<com.unrea
 
     public static final StreamCodec<FriendlyByteBuf, SyncColorsPacket> CODEC = StreamCodec.composite(
             ResourceLocation.STREAM_CODEC, SyncColorsPacket::dim,
-            WeatherGateCodecs.MAP_CODEC_TW, SyncColorsPacket::data,
+            WeatherGateCodecs.MAP_STREAM_CODEC_TWO, SyncColorsPacket::data,
             SyncColorsPacket::new);
 
 

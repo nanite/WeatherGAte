@@ -1,6 +1,7 @@
 {
   "values": [
     "weathergate:snow_catcher",
-    "weathergate:terrain_controller"
+    "weathergate:terrain_controller",
+    "weathergate:sun_in_a_box"
   ]
 }

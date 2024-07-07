@@ -5,10 +5,13 @@ import dev.ftb.mods.ftblibrary.icon.Color4I;
 import dev.ftb.mods.ftblibrary.icon.Icon;
 import dev.ftb.mods.ftblibrary.icon.ItemIcon;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
+import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.BiFunction;
@@ -36,6 +39,8 @@ public enum Type implements StringRepresentable {
     ;
 
     public static final Codec<Type> CODEC = StringRepresentable.fromEnum(Type::values);
+
+    public static final StreamCodec<FriendlyByteBuf, Type> STREAM_CODEC = NeoForgeStreamCodecs.enumCodec(Type.class);
 
 
     private final BiFunction<Biome, BlockPos, Color4I> defaultColor;

@@ -1,5 +1,6 @@
 {
   "block.weathergate.snow_catcher": "Snow Catcher",
+  "block.weathergate.sun_in_a_box": "Sun In A Box",
   "block.weathergate.terrain_controller": "Teriann Controller",
   "block.weathergate.terrain_controller.no_data": "No Data Found! Replace Block and Try Again!",
   "weathergate.type.foliage": "Foliage",

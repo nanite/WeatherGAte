@@ -1,3 +1,3 @@
-### 1.0.0
+### 1.0.1
 
-- Release to CurseForge
+- Sun In A Box

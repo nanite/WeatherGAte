@@ -26,7 +26,7 @@ public record UpdateColorPacket(GlobalPos globalPos, Map<com.unrealdinnerbone.we
 
     public static final StreamCodec<FriendlyByteBuf, UpdateColorPacket> CODEC = StreamCodec.composite(
             GlobalPos.STREAM_CODEC, UpdateColorPacket::globalPos,
-            WeatherGateCodecs.MAP_CODEC, UpdateColorPacket::updateMap,
+            WeatherGateCodecs.MAP_STREAM_CODEC, UpdateColorPacket::updateMap,
             UpdateColorPacket::new);
 
 
@@ -47,7 +47,7 @@ public record UpdateColorPacket(GlobalPos globalPos, Map<com.unrealdinnerbone.we
                 }
             });
         }else {
-            LOGGER.error("Failed to find block color map for " + location);
+            LOGGER.error("Failed to find block color map for {}", location);
         }
     }
 

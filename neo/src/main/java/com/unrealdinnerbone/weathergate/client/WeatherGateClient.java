@@ -8,9 +8,11 @@ import dev.ftb.mods.ftblibrary.icon.Color4I;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ColorResolver;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -18,11 +20,13 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class WeatherGateClient
 {
     public static final Map<ResourceLocation, Map<BlockPos, Map<Type, Color4I>>> BLOCK_COLORS = new HashMap<>();
+    public static final Map<ResourceKey<Level>, List<BlockPos>> SUN_IN_BOX_LOCATIONS = new HashMap<>();
 
     public static void init(IEventBus eventBus) {
         eventBus.addListener(EventPriority.LOWEST, WeatherGateClient::onClientSetup);
@@ -30,7 +34,7 @@ public class WeatherGateClient
 
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            if(ModList.get().isLoaded("sereneseasons-fixchangeme")) {
+            if(ModList.get().isLoaded("sereneseasons")) {
                 SereneSeasonsCompact.registerCompact();
                 WeatherGateClient.injectResolvers(false);
             }

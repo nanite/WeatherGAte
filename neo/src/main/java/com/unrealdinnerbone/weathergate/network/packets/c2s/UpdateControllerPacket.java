@@ -24,7 +24,7 @@ public record UpdateControllerPacket(GlobalPos globalPos, Map<com.unrealdinnerbo
 
     public static final StreamCodec<FriendlyByteBuf, UpdateControllerPacket> CODEC = StreamCodec.composite(
             GlobalPos.STREAM_CODEC, UpdateControllerPacket::globalPos,
-            WeatherGateCodecs.MAP_CODEC, UpdateControllerPacket::updateMap,
+            WeatherGateCodecs.MAP_STREAM_CODEC, UpdateControllerPacket::updateMap,
             UpdateControllerPacket::new);
 
     public static void handleUpdateColorPacket(UpdateControllerPacket updateColorPacket, IPayloadContext context) {

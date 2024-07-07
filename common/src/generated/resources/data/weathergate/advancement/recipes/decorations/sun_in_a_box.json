@@ -1,32 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sapling": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "weathergate:sun_in_a_box"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yellow": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:oak_sapling"
+            "items": "#c:dyes/yellow"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "weathergate:teriann_controller"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_sapling"
+      "has_yellow"
     ]
   ],
   "rewards": {
     "recipes": [
-      "weathergate:teriann_controller"
+      "weathergate:sun_in_a_box"
     ]
   }
 }

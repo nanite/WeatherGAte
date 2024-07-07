@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -36,10 +37,20 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
                 .pattern("GGG")
                 .define('O', ItemTags.LEAVES)
                 .define('W', Items.WATER_BUCKET)
-                .define('B', Blocks.BEACON)
+                .define('B', Blocks.OAK_SAPLING)
                 .define('G', Blocks.GRASS_BLOCK)
-                .unlockedBy("has_beacon", has(Blocks.BEACON))
+                .unlockedBy("has_sapling", has(Blocks.OAK_SAPLING))
                 .save(recipeOutput, WeatherGate.rl("teriann_controller"));
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, WeatherGateRegistry.SUN_IN_A_BOX.get())
+                .pattern("YYY")
+                .pattern("YCY")
+                .pattern("YYY")
+                .define('C', Blocks.YELLOW_CONCRETE)
+                .define('Y', Tags.Items.DYES_YELLOW)
+                .unlockedBy("has_yellow", has(Tags.Items.DYES_YELLOW))
+                .save(recipeOutput, WeatherGate.rl("sun_in_a_box"));
 
     }
 }

@@ -18,6 +18,7 @@ public class ModelProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         standardBlock(WeatherGateRegistry.SNOW_CATCHER.get());
         standardBlock(WeatherGateRegistry.TERIANN_CONTROLLER.get());
+        standardBlock(WeatherGateRegistry.SUN_IN_A_BOX.get());
     }
 
     private void standardBlock(Block block) {

@@ -20,19 +20,8 @@ public record OpenTerrainControllerPacket(BlockPos blockPos, Map<com.unrealdinne
 
     public static final StreamCodec<FriendlyByteBuf, OpenTerrainControllerPacket> CODEC = StreamCodec.composite(
             BlockPos.STREAM_CODEC, OpenTerrainControllerPacket::blockPos,
-            WeatherGateCodecs.MAP_CODEC, OpenTerrainControllerPacket::map,
+            WeatherGateCodecs.MAP_STREAM_CODEC, OpenTerrainControllerPacket::map,
             OpenTerrainControllerPacket::new);
-
-    public static OpenTerrainControllerPacket fromByteBuff(FriendlyByteBuf buffer) {
-        BlockPos blockPos = buffer.readBlockPos();
-        Map<com.unrealdinnerbone.weathergate.util.Type, Color4I> data = buffer.readMap(byteBuf -> byteBuf.readEnum(com.unrealdinnerbone.weathergate.util.Type.class), byteBuf -> Color4I.rgb(byteBuf.readInt()));
-        return new OpenTerrainControllerPacket(blockPos, data);
-    }
-
-    public void write(FriendlyByteBuf buffer) {
-        buffer.writeBlockPos(blockPos);
-        buffer.writeMap(map, FriendlyByteBuf::writeEnum, (byteBuf, color4I) -> byteBuf.writeInt(color4I.rgb()));
-    }
 
 
     public static void handleOpenTerrainControllerPacket(OpenTerrainControllerPacket packet, IPayloadContext context) {

@@ -23,7 +23,8 @@ public class TagProvider {
         protected void addTags(HolderLookup.Provider pProvider) {
             tag(BlockTags.MINEABLE_WITH_PICKAXE)
                     .add(WeatherGateRegistry.SNOW_CATCHER.get())
-                    .add(WeatherGateRegistry.TERIANN_CONTROLLER.get());
+                    .add(WeatherGateRegistry.TERIANN_CONTROLLER.get())
+                    .add(WeatherGateRegistry.SUN_IN_A_BOX.get());
         }
     }
 }

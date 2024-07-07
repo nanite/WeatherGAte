@@ -5,8 +5,10 @@ import com.unrealdinnerbone.trenzalore.api.registry.Regeneration;
 import com.unrealdinnerbone.trenzalore.api.registry.RegistryEntry;
 import com.unrealdinnerbone.trenzalore.api.registry.RegistryObjects;
 import com.unrealdinnerbone.trenzalore.lib.CreativeTabs;
+import com.unrealdinnerbone.weathergate.block.SunInABoxBlock;
 import com.unrealdinnerbone.weathergate.block.TerrainControllerBlock;
 import com.unrealdinnerbone.weathergate.level.attachments.SnowCatcherAttachment;
+import com.unrealdinnerbone.weathergate.level.attachments.SunInABlockAttachment;
 import com.unrealdinnerbone.weathergate.level.attachments.TerrainControllerAttachment;
 import com.unrealdinnerbone.weathergate.block.SnowCatcherBlock;
 import net.minecraft.core.registries.Registries;
@@ -27,20 +29,26 @@ public class WeatherGateRegistry implements IRegistry {
     public static final RegistryEntry<AttachmentType<SnowCatcherAttachment>> SNOW_CATCHER_ATTACHMENT = ATTACHMENT_TYPE.register("snow_catcher", () ->
             AttachmentType.builder(() -> SnowCatcherAttachment.EMPTY).serialize(SnowCatcherAttachment.CODEC).build());
 
+    public static final RegistryEntry<AttachmentType<SunInABlockAttachment>> SUN_IN_A_BOX_ATTACHMENT = ATTACHMENT_TYPE.register("snow_in_a_box", () ->
+            AttachmentType.builder(() -> SunInABlockAttachment.EMPTY).serialize(SunInABlockAttachment.CODEC).build());
+
     public static final RegistryEntry<AttachmentType<TerrainControllerAttachment>> TERIANN_CONTROLLER_ATTACHMENT = ATTACHMENT_TYPE.register("terrain_controllers", () ->
             AttachmentType.builder(() -> TerrainControllerAttachment.EMPTY).serialize(TerrainControllerAttachment.CODEC).build());
+
     public static final RegistryEntry<Block> SNOW_CATCHER = BLOCKS.register("snow_catcher", SnowCatcherBlock::new);
     public static final RegistryEntry<Item> SNOW_CATCHER_ITEM = ITEMS.register("snow_catcher", () -> new BlockItem(SNOW_CATCHER.get(), new Item.Properties()));
 
-    public static final RegistryEntry<Block> TERIANN_CONTROLLER = BLOCKS.register("terrain_controller", TerrainControllerBlock::new);
+    public static final RegistryEntry<Block> SUN_IN_A_BOX = BLOCKS.register("sun_in_a_box", SunInABoxBlock::new);
+    public static final RegistryEntry<Item> SUN_IN_A_BOX_ITEM = ITEMS.register("sun_in_a_box", () -> new BlockItem(SUN_IN_A_BOX.get(), new Item.Properties()));
 
+    public static final RegistryEntry<Block> TERIANN_CONTROLLER = BLOCKS.register("terrain_controller", TerrainControllerBlock::new);
     public static final RegistryEntry<Item> TERIANN_CONTROLLER_ITEM = ITEMS.register("terrain_controller", () -> new BlockItem(TERIANN_CONTROLLER.get(), new Item.Properties()));
 
 
 
     @Override
     public void afterRegistered() {
-        Regeneration.addItemsToCreateTab(CreativeTabs.FUNCTIONAL_BLOCKS, List.of(SNOW_CATCHER_ITEM, TERIANN_CONTROLLER_ITEM));
+        Regeneration.addItemsToCreateTab(CreativeTabs.FUNCTIONAL_BLOCKS, List.of(SNOW_CATCHER_ITEM, TERIANN_CONTROLLER_ITEM, SUN_IN_A_BOX_ITEM));
     }
 
     @Override

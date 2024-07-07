@@ -64,6 +64,9 @@ subprojects {
         maven {
             url "https://maven.architectury.dev/"
         }
+        maven {
+            url "https://cursemaven.com"
+        }
     }
     tasks.withType(ProcessResources).configureEach {
         outputs.upToDateWhen { false }

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "weathergate:block/sun_in_a_box"
+    }
+  }
+}

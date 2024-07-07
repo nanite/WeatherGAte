@@ -16,6 +16,7 @@ public class LangProvider extends LanguageProvider {
     protected void addTranslations() {
         add(WeatherGateRegistry.SNOW_CATCHER.get(), "Snow Catcher");
         add(WeatherGateRegistry.TERIANN_CONTROLLER.get(), "Teriann Controller");
+        add(WeatherGateRegistry.SUN_IN_A_BOX.get(), "Sun In A Box");
         add("block.weathergate.terrain_controller.no_data", "No Data Found! Replace Block and Try Again!");
         add(Type.GRASS.getLangKey(), "Grass");
         add(Type.FOLIAGE.getLangKey(), "Foliage");
