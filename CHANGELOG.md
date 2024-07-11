@@ -1,3 +1,3 @@
-### 1.0.1
+### 1.0.2
 
-- Sun In A Box
+- Fix Crash

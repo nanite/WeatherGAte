@@ -28,9 +28,11 @@ public class ClientLevelMixin {
     public float modifySkyColor(float original) {
         ClientLevel level = (ClientLevel) (Object) this;
         BlockPos position = minecraft.gameRenderer.getMainCamera().getBlockPosition();
-        for (BlockPos blockPos : WeatherGateClient.SUN_IN_BOX_LOCATIONS.get(level.dimension())) {
-            if(RangeUtils.isWithinRange(blockPos, position, 64)) {
-                return 0;
+        if(WeatherGateClient.SUN_IN_BOX_LOCATIONS.containsKey(level.dimension())) {
+            for (BlockPos blockPos : WeatherGateClient.SUN_IN_BOX_LOCATIONS.get(level.dimension())) {
+                if(RangeUtils.isWithinRange(blockPos, position, 64)) {
+                    return 0;
+                }
             }
         }
         return original;
@@ -44,9 +46,11 @@ public class ClientLevelMixin {
     public float modifySkyDarken(float original) {
         ClientLevel level = (ClientLevel) (Object) this;
         BlockPos position = minecraft.gameRenderer.getMainCamera().getBlockPosition();
-        for (BlockPos blockPos : WeatherGateClient.SUN_IN_BOX_LOCATIONS.get(level.dimension())) {
-            if(RangeUtils.isWithinRange(blockPos, position, 64)) {
-                return 0;
+        if(WeatherGateClient.SUN_IN_BOX_LOCATIONS.containsKey(level.dimension())) {
+            for (BlockPos blockPos : WeatherGateClient.SUN_IN_BOX_LOCATIONS.get(level.dimension())) {
+                if(RangeUtils.isWithinRange(blockPos, position, 64)) {
+                    return 0;
+                }
             }
         }
         return original;
@@ -60,9 +64,11 @@ public class ClientLevelMixin {
     public float modifyCouldColor(float original) {
         ClientLevel level = (ClientLevel) (Object) this;
         BlockPos position = minecraft.gameRenderer.getMainCamera().getBlockPosition();
-        for (BlockPos blockPos : WeatherGateClient.SUN_IN_BOX_LOCATIONS.get(level.dimension())) {
-            if(RangeUtils.isWithinRange(blockPos, position, 64)) {
-                return 0;
+        if(WeatherGateClient.SUN_IN_BOX_LOCATIONS.containsKey(level.dimension())) {
+            for (BlockPos blockPos : WeatherGateClient.SUN_IN_BOX_LOCATIONS.get(level.dimension())) {
+                if(RangeUtils.isWithinRange(blockPos, position, 64)) {
+                    return 0;
+                }
             }
         }
         return original;

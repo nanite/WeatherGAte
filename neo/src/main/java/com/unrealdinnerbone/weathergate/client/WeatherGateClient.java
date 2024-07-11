@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class WeatherGateClient
 {
-    public static final Map<ResourceLocation, Map<BlockPos, Map<Type, Color4I>>> BLOCK_COLORS = new HashMap<>();
+    public static final Map<ResourceKey<Level>, Map<BlockPos, Map<Type, Color4I>>> BLOCK_COLORS = new HashMap<>();
     public static final Map<ResourceKey<Level>, List<BlockPos>> SUN_IN_BOX_LOCATIONS = new HashMap<>();
 
     public static void init(IEventBus eventBus) {
@@ -65,7 +65,7 @@ public class WeatherGateClient
 
     public static Color4I getColorAtLocation(int x, int z, Type type) {
         Player player = Minecraft.getInstance().player;
-        ResourceLocation location = player.level().dimension().location();
+        ResourceKey<Level> location = player.level().dimension();
         Map<BlockPos, Map<Type, Color4I>> orDefault = BLOCK_COLORS.get(location);
         if(orDefault != null) {
             for (Map.Entry<BlockPos, Map<Type, Color4I>> blockPosMapEntry : orDefault.entrySet()) {

@@ -4,6 +4,8 @@ import com.mojang.logging.LogUtils;
 import com.unrealdinnerbone.weathergate.WeatherGate;
 import com.unrealdinnerbone.weathergate.client.WeatherGateClient;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import com.unrealdinnerbone.weathergate.WeatherGateCodecs;
 import dev.ftb.mods.ftblibrary.icon.Color4I;
@@ -33,7 +35,7 @@ public record UpdateColorPacket(GlobalPos globalPos, Map<com.unrealdinnerbone.we
 
 
     public static void handleUpdateColorPacket(UpdateColorPacket updateColorPacket, IPayloadContext context) {
-        ResourceLocation location = updateColorPacket.globalPos().dimension().location();
+        ResourceKey<Level> location = updateColorPacket.globalPos().dimension();
         if(WeatherGateClient.BLOCK_COLORS.containsKey(location)) {
             Map<BlockPos, Map<com.unrealdinnerbone.weathergate.util.Type, Color4I>> blockPosMapMap = WeatherGateClient.BLOCK_COLORS.get(location);
             if(blockPosMapMap.containsKey(updateColorPacket.globalPos().pos())) {

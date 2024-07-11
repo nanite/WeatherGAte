@@ -21,8 +21,8 @@ public record RemovePosPacket(GlobalPos globalPos) implements CustomPacketPayloa
 
     public static void handleRemovePosPacket(RemovePosPacket removePosPacket, IPayloadContext context) {
         context.enqueueWork(() -> {
-            if(WeatherGateClient.BLOCK_COLORS.containsKey(removePosPacket.globalPos().dimension().location())) {
-                WeatherGateClient.BLOCK_COLORS.get(removePosPacket.globalPos().dimension().location()).remove(removePosPacket.globalPos().pos());
+            if(WeatherGateClient.BLOCK_COLORS.containsKey(removePosPacket.globalPos().dimension())) {
+                WeatherGateClient.BLOCK_COLORS.get(removePosPacket.globalPos().dimension()).remove(removePosPacket.globalPos().pos());
                 if(WeatherGateClient.isPosInRange(removePosPacket.globalPos().pos())) {
                     Minecraft.getInstance().levelRenderer.allChanged();
                 }

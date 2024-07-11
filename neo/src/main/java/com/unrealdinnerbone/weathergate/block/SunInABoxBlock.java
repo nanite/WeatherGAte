@@ -27,7 +27,6 @@ public class SunInABoxBlock extends Block {
         if(level instanceof ServerLevel serverLevel) {
             SunInABlockAttachment.addBlockPos(serverLevel, blockPos);
             PacketDistributor.sendToPlayersInDimension(serverLevel, new UpdateSunInABoxPosPacket(new GlobalPos(level.dimension(), blockPos), UpdateSunInABoxPosPacket.UpdateType.ADD));
-
         }
         super.setPlacedBy(level, blockPos, blockState, livingEntity, itemStack);
     }

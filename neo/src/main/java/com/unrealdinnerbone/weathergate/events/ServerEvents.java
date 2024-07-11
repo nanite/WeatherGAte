@@ -24,7 +24,7 @@ public class ServerEvents
         if(!event.getEntity().level().isClientSide() && event.getEntity() instanceof ServerPlayer serverPlayer) {
             Level level = serverPlayer.level();
             TerrainControllerAttachment data = level.getData(WeatherGateRegistry.TERIANN_CONTROLLER_ATTACHMENT.get());
-            PacketDistributor.sendToPlayer(serverPlayer, new SyncColorsPacket(level.dimension().location(), data.data()));
+            PacketDistributor.sendToPlayer(serverPlayer, new SyncColorsPacket(level.dimension(), data.data()));
             SunInABlockAttachment sunInABlockAttachment = level.getData(WeatherGateRegistry.SUN_IN_A_BOX_ATTACHMENT.get());
             PacketDistributor.sendToPlayer(serverPlayer, new SyncSunInABoxPosPacket(level.dimension(), sunInABlockAttachment.blockPosList()));
         }
@@ -36,7 +36,7 @@ public class ServerEvents
             ServerLevel level1 = serverPlayer.getServer().getLevel(level);
             if(level1 != null) {
                 TerrainControllerAttachment data = level1.getData(WeatherGateRegistry.TERIANN_CONTROLLER_ATTACHMENT.get());
-                PacketDistributor.sendToPlayer(serverPlayer, new SyncColorsPacket(level.location(), data.data()));
+                PacketDistributor.sendToPlayer(serverPlayer, new SyncColorsPacket(level, data.data()));
                 SunInABlockAttachment sunInABlockAttachment = level1.getData(WeatherGateRegistry.SUN_IN_A_BOX_ATTACHMENT.get());
                 PacketDistributor.sendToPlayer(serverPlayer, new SyncSunInABoxPosPacket(level1.dimension(), sunInABlockAttachment.blockPosList()));
             }
