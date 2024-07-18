@@ -5,7 +5,6 @@ import com.unrealdinnerbone.weathergate.client.screen.TerrainControllerScreen2;
 import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import com.unrealdinnerbone.weathergate.WeatherGateCodecs;
-import com.unrealdinnerbone.weathergate.client.screen.TerrainControllerScreen;
 import dev.ftb.mods.ftblibrary.icon.Color4I;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
