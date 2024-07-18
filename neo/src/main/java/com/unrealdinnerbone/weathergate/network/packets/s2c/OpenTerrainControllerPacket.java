@@ -1,6 +1,7 @@
 package com.unrealdinnerbone.weathergate.network.packets.s2c;
 
 import com.unrealdinnerbone.weathergate.WeatherGate;
+import com.unrealdinnerbone.weathergate.client.screen.TerrainControllerScreen2;
 import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import com.unrealdinnerbone.weathergate.WeatherGateCodecs;
@@ -25,7 +26,7 @@ public record OpenTerrainControllerPacket(BlockPos blockPos, Map<com.unrealdinne
 
 
     public static void handleOpenTerrainControllerPacket(OpenTerrainControllerPacket packet, IPayloadContext context) {
-        context.enqueueWork(() -> new TerrainControllerScreen(packet.blockPos(), packet.map()).openGui());
+        context.enqueueWork(() -> new TerrainControllerScreen2(packet.blockPos(), packet.map()).openGui());
     }
 
 

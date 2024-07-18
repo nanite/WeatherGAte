@@ -1,6 +1,14 @@
+plugins {
+    id 'multiloader'
+}
+
 multiLoader.neo() {
     neoVersion.set("${neo_version}")
 }
+
+publishing.publications.mavenJava.from components.java
+
+sourceSets.main.resources { srcDir project(":common").file('src/generated/resources') }
 
 
 dependencies {
@@ -9,6 +17,4 @@ dependencies {
     implementation "curse.maven:serene-seasons-291874:5429913"
     implementation "curse.maven:glitchcore-955399:5483773"
 }
-
-publishing.publications.mavenJava.from components.java
 
