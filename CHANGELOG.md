@@ -1,3 +1,3 @@
-### 1.0.4
+### 1.0.5
 
-- Fix Mixin Debug Issue
+- Fix Place Block snow cathcer

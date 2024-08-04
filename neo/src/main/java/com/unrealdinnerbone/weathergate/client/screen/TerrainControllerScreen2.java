@@ -20,6 +20,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -75,12 +76,15 @@ public class TerrainControllerScreen2 extends AbstractButtonListScreen implement
             super(panel, value.getComponent(), value.getIcon(), (button, mouseButton) -> {
                 ColorConfig config = new ColorConfig();
                 config.setValue(activeValue[0]);
-                ColorSelectorPanel colorSelectorPanel = ColorSelectorPanel.popupAtMouse(TerrainControllerScreen2.this, config, (accepted) -> {
+                ColorSelectorPanel colorSelectorPanel = new ColorSelectorPanel(TerrainControllerScreen2.this, config, (accepted) -> {
                     if(accepted) {
                         activeValue[0] = config.getValue();
                         PacketDistributor.sendToServer(new UpdateControllerPacket(GlobalPos.of(Minecraft.getInstance().player.level().dimension(), TerrainControllerScreen2.this.blockPos), Map.of(value, config.getValue())));
                     }
                 });
+                colorSelectorPanel.setPos(TerrainControllerScreen2.this.width / 2 - colorSelectorPanel.width / 2, TerrainControllerScreen2.this.width / 2 - colorSelectorPanel.height / 2);
+                colorSelectorPanel.setAllowAlphaEdit(config.isAllowAlphaEdit());
+                colorSelectorPanel.getGui().pushModalPanel(colorSelectorPanel);
                 colorSelectorPanel.setAllowAlphaEdit(false);
                 colorSelectorPanel.setExtraZlevel(100);
             });

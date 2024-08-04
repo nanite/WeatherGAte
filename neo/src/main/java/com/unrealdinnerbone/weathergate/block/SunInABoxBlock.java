@@ -6,15 +6,12 @@ import com.unrealdinnerbone.weathergate.network.packets.s2c.UpdateSunInABoxPosPa
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.jetbrains.annotations.Nullable;
 
 public class SunInABoxBlock extends Block {
 
@@ -23,12 +20,12 @@ public class SunInABoxBlock extends Block {
     }
 
     @Override
-    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, @Nullable LivingEntity livingEntity, ItemStack itemStack) {
+    public void onPlace(BlockState newState, Level level, BlockPos blockPos, BlockState oldState, boolean pistonMoved) {
         if(level instanceof ServerLevel serverLevel) {
             SunInABlockAttachment.addBlockPos(serverLevel, blockPos);
             PacketDistributor.sendToPlayersInDimension(serverLevel, new UpdateSunInABoxPosPacket(new GlobalPos(level.dimension(), blockPos), UpdateSunInABoxPosPacket.UpdateType.ADD));
         }
-        super.setPlacedBy(level, blockPos, blockState, livingEntity, itemStack);
+        super.onPlace(newState, level, blockPos, oldState, pistonMoved);
     }
 
     @Override

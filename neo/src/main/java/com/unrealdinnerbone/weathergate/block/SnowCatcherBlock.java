@@ -18,12 +18,12 @@ public class SnowCatcherBlock extends Block {
         super(Properties.of().mapColor(MapColor.SNOW).requiresCorrectToolForDrops().strength(5f).sound(SoundType.SNOW));
     }
 
+
     @Override
-    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, @Nullable LivingEntity livingEntity, ItemStack itemStack) {
+    protected void onPlace(BlockState state, Level level, BlockPos blockPos, BlockState blockState, boolean update) {
         if(level instanceof ServerLevel serverLevel) {
             SnowCatcherAttachment.addBlockPos(serverLevel, blockPos);
         }
-        super.setPlacedBy(level, blockPos, blockState, livingEntity, itemStack);
     }
 
     @Override

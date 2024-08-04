@@ -6,10 +6,12 @@ import net.minecraft.resources.ResourceLocation;
 import com.unrealdinnerbone.weathergate.data.WeatherGateData;
 import com.unrealdinnerbone.weathergate.events.ServerEvents;
 import com.unrealdinnerbone.weathergate.network.WeatherGateNetwork;
+import net.minecraft.util.ExtraCodecs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.util.NeoForgeExtraCodecs;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
 @Mod(WeatherGate.MOD_ID)
