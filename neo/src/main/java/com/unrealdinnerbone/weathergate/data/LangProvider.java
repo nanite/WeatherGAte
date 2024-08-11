@@ -18,6 +18,7 @@ public class LangProvider extends LanguageProvider {
         add(WeatherGateRegistry.TERIANN_CONTROLLER.get(), "Teriann Controller");
         add(WeatherGateRegistry.SUN_IN_A_BOX.get(), "Sun In A Box");
         add("block.weathergate.terrain_controller.no_data", "No Data Found! Replace Block and Try Again!");
+        add("weathergate.sun_in_a_box.tooltip", "Make Sun Light value always noon (Client Only)");
         add(Type.GRASS.getLangKey(), "Grass");
         add(Type.FOLIAGE.getLangKey(), "Foliage");
         add(Type.WATER.getLangKey(), "Water");

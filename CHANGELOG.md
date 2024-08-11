@@ -1,3 +1,3 @@
-### 1.0.5
+### 1.0.6
 
-- Fix Place Block snow cathcer
+- Add Tooltip to Sun in A Box
