@@ -17,8 +17,6 @@ public class WeatherGateData {
         event.getGenerator().addProvider(event.includeClient(), new TagProvider.Blocks(event.getGenerator().getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));
         event.getGenerator().addProvider(event.includeServer(), create(event.getGenerator().getPackOutput(), event.getLookupProvider()));
         event.getGenerator().addProvider(event.includeServer(), new LangProvider(event.getGenerator().getPackOutput()));
-
-
     }
 
     public static net.minecraft.data.loot.LootTableProvider create(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
